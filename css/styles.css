@@ -1,0 +1,223 @@
+*{
+font-family: 'Josefin Sans';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.logo{
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.8em;
+  width: 266px;
+  height: 33px;
+  left: 0px;
+  top: 41px;}
+.logo a:hover{
+    color: #ff0000;
+}
+.navigation a{
+  color: #000;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    padding-left: 30px;
+}
+
+.navigation a:hover{
+    color: #ff0000;
+}
+header {
+  background-color:#fff;
+ width: 100%;
+ position: fixed;
+ z-index: 999;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 10px 200px ;
+}
+.main{
+  background: url(images\background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+   background-size: cover}
+h1{
+position: absolute;
+width: 397px;
+height: 150px;
+left: 102px;
+top: 248px;
+font-style: normal;
+font-weight: 700;
+font-size: 50px;
+line-height: 50px;
+color: #E03616;
+}
+.information{
+  position: absolute;
+width: 496px;
+height: 60px;
+left: 102px;
+top: 454px;
+
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 20px;
+
+color: #161616;
+
+}
+
+
+*{
+font-family: 'Josefin Sans';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.background{
+  background-image: url(images\background.png);
+
+}
+.mCourses{
+  width: 608px;
+  height: 33px;
+  left: 112px;
+  top: 117px;
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 100px;
+  color: #FAFAFA
+}
+.join a{
+border: none;
+color: black;
+padding: 15px 32px;
+text-align: center;
+margin: 4px 2px;
+cursor: pointer;
+position: absolute;
+width: 138px;
+height: 59px;
+left: 102px;
+top: 572px;
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 20px;
+}
+.join a:hover{
+    color: red;
+}
+.umsila{
+  position: absolute;
+width: 113px;
+height: 20px;
+left: 273px;
+top: 594px;
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 15px;
+color: #000;
+}
+.umsila a:hover{
+    color: #ff0000;
+}
+.utelemcen{
+  position: absolute;
+width: 113px;
+height: 20px;
+left: 442px;
+top: 594px;
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 15px;
+color: #000;
+}
+.utelemcen a:hover{
+    color: #ff0000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////
+
+@media only screen and (max-width: 600px) {
+  .logo{
+    position: absolute;
+    width: 266px;
+    height: 33px;
+    left: 58px;
+    top: 43px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 30px;
+    color: #161616;
+  }
+}
+
+.background{
+  background-image: url(images\background.png);
+
+}
+.mCourses{
+  width: 608px;
+  height: 33px;
+  left: 112px;
+  top: 117px;
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 100px;
+  color: #FAFAFA
+}
+
+.visit{
+  position: absolute;
+width: 113px;
+height: 20px;
+left: 273px;
+top: 594px;
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 15px;
+color: #000;
+}
+.visit a:hover{
+    color: #ff0000;
+}
+
+.a{position: absolute;
+width: 136px;
+height: 189px;
+left: 1200.99px;
+top: 631px;
+background: #58355E;
+box-shadow: 0px 0px 30px rgba(88, 53, 94, 0.5);
+border-radius: 20px;}
+footer{
+  background-color: black;
+  top: auto;
+}
