@@ -1,0 +1,51 @@
+[
+  {
+    "v": 1,
+    "name": "msrc",
+    "folders": [],
+    "requests": [
+      {
+        "v": "1",
+        "endpoint": "http://localhost:8080/login",
+        "name": "login",
+        "params": [],
+        "headers": [],
+        "method": "POST",
+        "auth": {
+          "authType": "none",
+          "authActive": true,
+          "addTo": "Headers",
+          "key": "",
+          "value": ""
+        },
+        "preRequestScript": "",
+        "testScript": "",
+        "body": {
+          "contentType": "application/json",
+          "body": "{\n  \"name\": \"tahar belghitri\",\n  \"email\": \"gitnawi02@gmail.com\",\n  \"password\": \"123456789\",\n  \"confirmPassowrd\" :\"123456789\"\n}"
+        }
+      },
+      {
+        "v": "1",
+        "endpoint": "http://localhost:8080/signup",
+        "name": "signup",
+        "params": [],
+        "headers": [],
+        "method": "POST",
+        "auth": {
+          "authType": "none",
+          "authActive": true,
+          "addTo": "Headers",
+          "key": "",
+          "value": ""
+        },
+        "preRequestScript": "",
+        "testScript": "",
+        "body": {
+          "contentType": "application/json",
+          "body": "{\n  \"name\": \"tahar belghitri\",\n  \"email\": \"gitnawi02@gmail.com\",\n  \"password\": \"123456789\",\n  \"confirmPassowrd\" :\"123456789\"\n}"
+        }
+      }
+    ]
+  }
+]
