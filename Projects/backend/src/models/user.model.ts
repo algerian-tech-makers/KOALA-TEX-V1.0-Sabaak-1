@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { FilterQuery, HydratedDocument, model, Schema } from "mongoose";
-import { userModel, userSchema, modelType } from "../types/model";
+import { userModel, userSchema } from "../types/model";
 import { hash } from "bcryptjs";
 
 const userSchema = new Schema<userSchema>({

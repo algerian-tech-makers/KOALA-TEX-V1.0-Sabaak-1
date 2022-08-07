@@ -9,6 +9,16 @@ export type userSchema = Document & {
   liked: string[];
 };
 
+export type postSchema = Document & {
+  userId: string;
+  title: string;
+  content: string;
+  createdAt: number;
+  tags: string[];
+  comments?: { userId: string; content: string; answered?: string }[];
+  rating: number;
+};
+
 export type modelType = {
   findUser: (
     FilterQuery: FilterQuery<userSchema>,
@@ -16,4 +26,5 @@ export type modelType = {
     rslt: (args: HydratedDocument<userSchema>) => void
   ) => void;
 };
+export type postModel = Model<postSchema> & {};
 export type userModel = Model<userSchema> & modelType;

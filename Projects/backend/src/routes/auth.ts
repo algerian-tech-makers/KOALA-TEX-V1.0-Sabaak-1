@@ -1,12 +1,8 @@
 import { Router } from "express";
 import { googleAuthMid, login, signup } from "../controllers/auth";
-import { OAuth2Strategy as GoogleStrategy } from "passport-google-oauth";
 import passport from "passport";
 import express from "express";
 const router = Router();
-
-router.use(express.json());
-router.use(express.urlencoded({ extended: false }));
 
 router.use(passport.initialize());
 router.post("/login", login);
