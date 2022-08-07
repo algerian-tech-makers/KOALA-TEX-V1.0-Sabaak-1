@@ -7,6 +7,7 @@ import { compare } from "bcryptjs";
 
 export const login: Handler = (req, res) => {
   const { email, password } = req.body;
+
   user
     .findOne({ email })
     .then((user) => {
@@ -37,7 +38,9 @@ export const signup: Handler = (req, res) => {
       if (userFound)
         return res.json({
           err:
-            user.name == name ? "name already taken " : "email already taked",
+            userFound.name == name
+              ? "name already taken "
+              : "email already taken",
         });
 
       new user({ name, email, password })

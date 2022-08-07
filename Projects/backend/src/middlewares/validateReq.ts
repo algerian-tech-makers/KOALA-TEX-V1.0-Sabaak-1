@@ -4,10 +4,10 @@ import validation from "../helpers/validation";
 
 export const validateReq: Handler = (req, resF, next) => {
   const res = resHelper(resF);
-
+  console.log(req);
   const path = req.path.replace("/", "") as keyof typeof validation;
 
-  if (!validation[path]) return res();
+  if (!validation[path]) return next();
 
   validation[path]
     .isValid(req.body)

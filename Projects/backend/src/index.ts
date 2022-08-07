@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.use(validateReq);
+app.use(validateReq);
 
 app.use(authRout);
 passport.use(googleStrategy);
