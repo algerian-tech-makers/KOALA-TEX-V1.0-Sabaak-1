@@ -3,6 +3,7 @@ import { Profile } from "passport";
 import { OAuth2Strategy as GoogleStrategy } from "passport-google-oauth";
 import { user } from "../models/user.model";
 import { tokenSign } from "../helpers/validation";
+import { compare } from "bcryptjs";
 
 export const login: Handler = (req, res) => {
   const { email, password } = req.body;
@@ -10,9 +11,20 @@ export const login: Handler = (req, res) => {
     .findOne({ email })
     .then((user) => {
       if (!user) return res.status(400).json({ err: "unvalid email" });
+
+      compare(password, user.password, (err, success) => {
+        if (err)
+          return res.status(400).json({ err: "something wrong happend" });
+
+        if (success)
+          return res.status(200).json({ token: tokenSign(user._id) });
+
+        res.status(400).json({ err: "unvalid password" });
+      });
     })
     .catch(() => res.status(400).json({ err: "something wrong happend" }));
 };
+
 export const signup: Handler = (req, res) => {
   const { name, email, password, confirmPassowrd } = req.body;
 

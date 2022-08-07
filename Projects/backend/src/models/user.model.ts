@@ -1,6 +1,7 @@
 import { Response } from "express";
 import { FilterQuery, HydratedDocument, model, Schema } from "mongoose";
 import { userModel, userSchema, modelType } from "../types/model";
+import { hash } from "bcryptjs";
 
 const userSchema = new Schema<userSchema>({
   name: String,
@@ -8,6 +9,16 @@ const userSchema = new Schema<userSchema>({
   password: String,
   collections: [{ collectionName: String, articleUrl: [String] }],
   liked: [{ articleUrl: String }],
+});
+
+userSchema.pre<userSchema>("validate", function (this: userSchema, next) {
+  //random pics
+
+  hash(this.password, 8, (err, hash) => {
+    if (err) throw err;
+    this.password = hash;
+    next();
+  });
 });
 
 userSchema.statics.findUser = (
