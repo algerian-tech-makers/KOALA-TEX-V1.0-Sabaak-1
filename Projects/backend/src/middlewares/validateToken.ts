@@ -4,11 +4,12 @@ import { user } from "../models/user.model";
 
 export const validateToken: Handler = (req, res, next) => {
   // this need to fix to
-  const _id: any = tokenVrfy(req.headers.token as string);
+  const { str }: any = tokenVrfy(req.headers.token as string);
+  console.log(str);
 
-  if (!_id) return res.status(400).json({ err: "something wrong happend" });
+  if (!str) return res.status(400).json({ err: "something wrong happend" });
 
-  user.findOne({ _id }, (err, user) => {
+  user.findOne({ _id: str }, (err: any, user: any) => {
     if (err || !user)
       return res.status(400).json({ err: "something wrong happend" });
 

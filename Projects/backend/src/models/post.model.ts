@@ -7,8 +7,10 @@ const postSchema = new Schema<postSchema>({
   content: String,
   tags: [String],
   createdAt: Number,
-  comments: [{ userId: String, content: String, answered: String }],
+  comments: [{ userId: String, content: String, answered: [String] }],
   rating: Number,
+  file: [String],
+  srcUrl: String,
 });
 
 export const post = model<postSchema, postModel>("msrc.post", postSchema);

@@ -15,8 +15,10 @@ export type postSchema = Document & {
   content: string;
   createdAt: number;
   tags: string[];
-  comments?: { userId: string; content: string; answered?: string }[];
+  comments?: { userId: string; content: string; answered?: string[] }[];
   rating: number;
+  srcUrl?: string;
+  file?: string[];
 };
 
 export type modelType = {

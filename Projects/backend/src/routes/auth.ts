@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { googleAuthMid, login, signup } from "../controllers/auth";
 import passport from "passport";
-import express from "express";
 const router = Router();
 
 router.use(passport.initialize());

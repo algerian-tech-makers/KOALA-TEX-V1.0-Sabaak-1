@@ -1,11 +1,13 @@
 import express from "express";
 import authRout from "./routes/auth";
+import postRout from "./routes/post";
 import session from "express-session";
 import { validateReq } from "./middlewares/validateReq";
 import helmet from "helmet";
 import cors from "cors";
 import passport from "passport";
 import { googleStrategy } from "./controllers/auth";
+import { post } from "./models/post.model";
 
 const app = express();
 app.use(express.json());
@@ -21,15 +23,12 @@ app.use(
 
 app.use(cors());
 app.use(helmet());
-app.use((req, res, next) => {
-  console.log("req.body");
-  console.log(req.body);
-  next();
-});
 
 app.use(validateReq);
-
 app.use(authRout);
+app.use(postRout);
 passport.use(googleStrategy);
+
+post.find({}).then((r) => console.log(r));
 
 export default app;
