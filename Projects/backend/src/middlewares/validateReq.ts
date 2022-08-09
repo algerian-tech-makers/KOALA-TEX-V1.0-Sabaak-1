@@ -8,6 +8,8 @@ export const validateReq: Handler = (req, resF, next) => {
 
   if (!validation[path]) return next();
 
+  console.log(req.body);
+
   validation[path]
     .isValid(req.body)
     .then((valid) => (console.log(valid), valid ? next() : res()))

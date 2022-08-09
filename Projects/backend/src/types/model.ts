@@ -5,7 +5,10 @@ export type userSchema = Document & {
   name: string;
   email: string;
   password: string;
-  collections?: { collectionName: string; articlesUrl: string[] }[];
+  collections?: {
+    collectionName: string;
+    articleUrl: { title: string; url: string }[];
+  }[];
   liked: string[];
 };
 

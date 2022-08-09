@@ -7,7 +7,9 @@ const userSchema = new Schema<userSchema>({
   name: String,
   email: String,
   password: String,
-  collections: [{ collectionName: String, articleUrl: [String] }],
+  collections: [
+    { collectionName: String, articleUrl: [{ title: String, url: String }] },
+  ],
   liked: [{ articleUrl: String }],
 });
 

@@ -29,6 +29,6 @@ app.use(authRout);
 app.use(postRout);
 passport.use(googleStrategy);
 
-post.find({}).then((r) => console.log(r));
+// post.find({}).then((r) => console.log(r));
 
 export default app;

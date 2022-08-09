@@ -11,7 +11,7 @@ export const login: Handler = (req, res) => {
   user
     .findOne({ email })
     .then((user) => {
-      if (!user) return res.status(400).json({ err: "unvalid email" });
+      if (!user) return res.status(400).json({ err: "email.unvalid email" });
 
       compare(password, user.password, (err, success) => {
         if (err)
@@ -20,17 +20,17 @@ export const login: Handler = (req, res) => {
         if (success)
           return res.status(200).json({ token: tokenSign(user._id) });
 
-        res.status(400).json({ err: "unvalid password" });
+        res.status(400).json({ err: "password.unvalid password" });
       });
     })
-    .catch(() => res.status(400).json({ err: "something wrong happend" }));
+    .catch(() => res.status(400).json({ err: "something wrong happend #1" }));
 };
 
 export const signup: Handler = (req, res) => {
   const { name, email, password, confirmPassowrd } = req.body;
 
   if (password !== confirmPassowrd)
-    return res.status(400).json({ err: "something wrong happend" });
+    return res.status(400).json({ err: "password.check your password" });
 
   user
     .findOne({ $or: [{ name }, { email }] })
@@ -39,16 +39,20 @@ export const signup: Handler = (req, res) => {
         return res.json({
           err:
             userFound.name == name
-              ? "name already taken "
-              : "email already taken",
+              ? "name.name already taken "
+              : "email.email already taken",
         });
 
       new user({ name, email, password })
         .save()
         .then((user) => res.status(200).json({ token: tokenSign(user._id) }))
-        .catch(() => res.status(400).json({ err: "something wrong happend" }));
+        .catch(() =>
+          res.status(400).json({ err: "name.something wrong happend 1" })
+        );
     })
-    .catch(() => res.status(400).json({ err: "something wrong happend" }));
+    .catch(() =>
+      res.status(400).json({ err: "name.something wrong happend 2" })
+    );
 };
 
 export const googleAuthMid: Handler = (req, res) => {

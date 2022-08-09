@@ -4,6 +4,7 @@ import { post } from "../models/post.model";
 import { userSchema } from "../types/model";
 import formidable from "formidable";
 import { createpostValidation } from "../helpers/validation";
+import { user } from "../models/user.model";
 
 const form = new formidable.IncomingForm({
   allowEmptyFiles: false,
@@ -112,6 +113,71 @@ export const editPost: Handler = (req, res) => {
         .save()
         .then(() => res.status(200).json({ rslt: "posted" }))
         .catch(() => res.status(400).json({ err: "something wrong happend" }));
+    })
+    .catch(() => res.status(400).json({ err: "something wrong happend" }));
+};
+
+export const createCollection: Handler = (req, res) => {
+  const { link, title, place } = req.body;
+  const userResult = req.user as HydratedDocument<userSchema>;
+
+  console.log(req.body);
+
+  user
+    .findOne(
+      { _id: userResult._id, "collections.collectionName": place },
+      "collections"
+    )
+    .then((collection) => {
+      console.log("collection");
+      console.log(collection);
+
+      if (!collection) {
+        const newCollection = {
+          collectionName: place as string,
+          articleUrl: [{ title: title as string, url: link as string }],
+        };
+
+        userResult.collections?.push(newCollection);
+
+        console.log(userResult.collections);
+
+        userResult
+          .save()
+          .then(() => res.status(200).json({ rslt: "saved" }))
+          .catch(() =>
+            res.status(400).json({ err: "something wrong happend" })
+          );
+
+        return;
+      } else {
+        let err: string | undefined;
+        userResult.collections?.map((e) => {
+          if (e.collectionName === place) {
+            e.articleUrl.map((article) => {
+              console.log(article);
+              if (article.url === link && article.title === title)
+                err = "article already saved";
+              else
+                e.articleUrl.push({
+                  title: title as string,
+                  url: link as string,
+                });
+            });
+          }
+        });
+
+        if (err) res.status(400).json({ err });
+        else
+          userResult
+            .save()
+            .then(() => res.status(200).json({ rslt: "saved" }))
+            .catch(() =>
+              res.status(400).json({ err: "something wrong happend" })
+            );
+
+        return;
+      }
     })
     .catch(() => res.status(400).json({ err: "something wrong happend" }));
 };
